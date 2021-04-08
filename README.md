@@ -1,62 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="https://alpana.org" target="_blank"><img src="https://res.cloudinary.com/debjit/image/upload/v1598972041/149_50_logo_uas3uf.png" width="150"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND.
+I will add more feature in time.You can discuss in github section. Thank you.
 
-## About Laravel
+## About Alpana Blood Donation Diary 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Alpana Blood Donation Diary is a simple app to manage your Groups / NGO's blood donations entry. I have created this app to help the local group manage with there blood donation.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [x] [Simple, easy to use.](https://alpana.org/bdd).
+- [x] [Multi Langual](https://alpana.org/bdd) (Bangla, English, or any other languages)
+- [x] Search donor based on requisition for fast communication.
+- [x] Anyone can post a requisition, No registration is required (Manual confirmation needed).
+- [ ] An admin gets an email with the information (If enable).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Admin can -
 
-## Learning Laravel
+- [x] Admin can accept or delete the requisition.
+- [x] Admin can accept the blood donation entry.
+- [x] Admin can see all the donations.
+- [x] Admin can manage any registered member.
+- [x] Admin can download certificate for every donation made.
+- [x] Admin can see who is available to donate.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Member can -
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [x] Self-care, User can manually add their blood donation from the profile page.
+- [x] Members can Opt-out from donating blood, with the date limitation.
+- [x] Request member for blood donation and Send email asking donation.
+- [x] User can download there own certificate from site.
+- [x] User can request help on an open acpeted requisition.
 
-## Laravel Sponsors
+## Otehr Site features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- [ ] [Real-time event broadcasting](https://alpana.org/bdd) is coming soon.
+- [ ] Push notification
+- [ ] Send SMS notification.
 
-### Premium Partners
+I am actively adding and updating this website, more feature coming soon.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+Alpana Blood Donation Diary is ready to deploy app. You can take advantage of free hosting service to host a free website.
 
-## Contributing
+## Installation (Production)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Go to the directory and install required file for production
 
-## Code of Conduct
+```bash
+composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Copy the env file 
 
-## Security Vulnerabilities
+```bash
+copy .env.example .env
+```
+Generate key 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan key:generate
+```
+Set the dattabase value in App/config/database.php or .env or your deployment enviornment.
+
+Migrate the database
+
+```bash
+php artisan migrate --seed
+```
+Your app is ready to use. Use default username and password for admin is-
+
+```bash
+email: admin@admin.com
+password : password
+```
+Now Link your storage for uploads
+```bash
+php artisan storage:link
+```
+
+## Hosting
+
+Alpana Blood Donation Diary is created on laravel php framework. Please ask your hosting provider for laravel support.
+- [x] Free Backend Hosting Provider [Heroku](https://heroku.com) and [Vercel](https://vercel.com) Setup tutorail(Will be update);
+
+- [ ] Cpanel Web Hosting Supported. Tutorial will be update shortly.
+
+## Security Vulnerabilities and Bugs
+
+If you discover a security vulnerability within Alpana Blood Donation Diary, please send an e-mail to Debjit Biswas via [hi@debjit.in](mailto:hi@debjit.in). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
