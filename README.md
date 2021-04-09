@@ -1,5 +1,7 @@
 <p align="center"><a href="https://alpana.org" target="_blank"><img src="https://res.cloudinary.com/debjit/image/upload/v1598972041/149_50_logo_uas3uf.png" width="150"></a></p>
 
+## The software is getting ready and will be available on 15th April. For MPV version please contact me via email.
+
 ## THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND.
 I will add more feature in time.You can discuss in github section. Thank you.
 
