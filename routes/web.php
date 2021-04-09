@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware'=>'auth'],function(){
+	Route::get('/profile',[App\Http\Controllers\User\ProfileController::class, 'edit'])->name('user.profile');
+	Route::post('/profile/update',[App\Http\Controllers\User\ProfileController::class, 'update'])->name('user.profile.update');
+	Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('user.dashboard');
+});
+Route::name('admin.')->prefix('admin')->middleware(['admincheck'])->group(function () {
+	
+});
