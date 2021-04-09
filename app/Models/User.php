@@ -52,7 +52,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'can_not_donate_until'=>'datetime',
         'last_donated'=>'datetime',
-        'donor_id'=>'array',
     ];
 
     public function donations()

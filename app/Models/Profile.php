@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+
+    protected $fillable = 
+    [
+    	'user_id','address','donor_id'
+    ];
+    protected $casts = [
+        'donor_id'=>'array'
+    ];
 }

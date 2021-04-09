@@ -44,7 +44,10 @@ class ProfileController extends Controller
         ]);
 
         auth()->user()->update($data);
-        
+        $updateProfile = Profile::updateOrCreate(
+            ['user_id'=>auth()->user()->id],
+            ['user_id'=>auth()->user()->id,'address'=>request()->address]
+        )->get();
         return back()->with('success','Thank you. Your data is updated.');
         // dd(ImageUploadService::Upload($request));
     }
