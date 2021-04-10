@@ -20,6 +20,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'blood_group',
+        'is_donor',
+        'last_donated',
+        'pincode_id',
+        'mobile',
+        'other_contact',
+        'donor_id',
+        'can_not_donate_until',
+        'avatar',
+
     ];
 
     /**
@@ -39,5 +50,18 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'can_not_donate_until'=>'datetime',
+        'last_donated'=>'datetime',
     ];
+
+    public function donations()
+    {
+        // return $this->hasMany('App\Models\Donation','user_id','id');
+    }
+    
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
 }
