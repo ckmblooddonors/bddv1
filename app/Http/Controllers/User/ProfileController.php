@@ -9,8 +9,7 @@ use Auth;
 use App\Services\ImageUploadService;
 
 class ProfileController extends Controller
-{
-    
+{    
 
     /**
      * Show the form for editing the specified resource.
@@ -32,6 +31,9 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
+        // Upload Image
+        $imageUpload = new ImageUploadService(auth()->user());
+
         $data = $request->validate([
             'name'=>'required',
             'mobile' =>'required|digits:10',
@@ -41,14 +43,22 @@ class ProfileController extends Controller
             'last_donated'=>'nullable',
             'can_not_donate_until'=>'nullable',
             'file' => 'image|mimes:jpg,jpeg,gif,png|max:500',
+            'address'=>'nullable|string'
         ]);
 
+        if (!empty($request->file('file'))) {
+            $data += ['avatar'=>$imageUpload->avatarUpload()];
+        }
+        
+        // Update current user's data
         auth()->user()->update($data);
+        
+        // Update profile data for this user.
         $updateProfile = Profile::updateOrCreate(
-            ['user_id'=>auth()->user()->id],
-            ['user_id'=>auth()->user()->id,'address'=>request()->address]
+            ['user_id'=>auth()->user()->id], //please find the user
+            ['user_id'=>auth()->user()->id,'address'=>request()->address], //or creatre the user
         )->get();
+
         return back()->with('success','Thank you. Your data is updated.');
-        // dd(ImageUploadService::Upload($request));
     }
 }

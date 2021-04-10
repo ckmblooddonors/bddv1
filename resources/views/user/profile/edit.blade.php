@@ -65,6 +65,22 @@
                       @enderror
                   </div>
               </div>
+              <!-- Address start -->
+              <div class="form-group row">
+                  <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+              
+                  <div class="col-md-6">
+                      <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') ?? ((empty(auth()->user()->profile))?'':auth()->user()->profile->address) }}" autocomplete="address" autofocus >
+              
+                      @error('address')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+              </div>
+                
+              <!-- Address End -->
               <!-- Blood Group -->
                         <div class="form-group row">
                             <label for="blood_group" class="col-md-4 col-form-label text-md-right">{{ __('Blood Group') }}</label>
@@ -124,7 +140,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                          
                           <p>Avatar Upload : </p>
+                          @if(auth()->user()->avatar)
+                          <br>
+                          Current Avatar
+                          <img src="{{auth()->user()->avatar}}" width="150" height="150">
+                          @endif
                           <input type="file" name="file" class="form-control">
                         </div>
 
