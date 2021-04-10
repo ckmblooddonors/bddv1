@@ -25,7 +25,7 @@
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a href="{{-- route("admin.usermanager.index") --}}" class="c-sidebar-nav-link {{ request()->is("admin/usermanager") || request()->is("admin/usermanager/*") ? "c-active" : "" }}">
+                    <a href="{{ route("admin.usermanager.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/usermanager") || request()->is("admin/usermanager/*") ? "c-active" : "" }}">
                         <i class="fa-fw fas fa-th-list c-sidebar-nav-icon">
 
                         </i>
@@ -34,7 +34,7 @@
                 </li>
                 
                 <li class="c-sidebar-nav-item">
-                    <a href="{{-- route("admin.usermanager.create") --}}" class="c-sidebar-nav-link {{ request()->is("admin/usermanager") || request()->is("admin/usermanager/*") ? "c-active" : "" }}">
+                    <a href="{{ route("admin.usermanager.create") }}" class="c-sidebar-nav-link {{ request()->is("admin/usermanager") || request()->is("admin/usermanager/*") ? "c-active" : "" }}">
                         <i class="fa-fw fas fa-user-plus c-sidebar-nav-icon">
 
                         </i>
