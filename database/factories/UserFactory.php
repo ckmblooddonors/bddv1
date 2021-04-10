@@ -26,6 +26,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'username'=>$this->faker->username,
             'mobile'=>rand(7800000000,9999999999),
+            'pincode_id'=>rand(100000,999999),
             // 'mobile'=>$this->faker->phonenumber,
             'blood_group'=>rand(1,8),
             'email' => $this->faker->unique()->safeEmail,
