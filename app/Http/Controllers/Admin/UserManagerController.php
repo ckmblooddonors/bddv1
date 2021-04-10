@@ -20,7 +20,8 @@ class UserManagerController extends Controller
         return request()->validate([
         "email"=>"required",
         "name" => "required",
-        "username" => "required",
+        "username" => "required|min:6|alpha_dash",
+        'password' => "required|string|min:8|confirmed",
         "pincode_id" => "required|digits:6",
         "mobile" => "required|digits:10",
         // "last_donated"=>"nullable", //last_donation is added manually for formatting using carbon
@@ -61,7 +62,13 @@ class UserManagerController extends Controller
     {
         // Get validated data and add password and last donated field
         $data = $this->validateUser();
-        $data +=['password' => bcrypt(mt_rand())];
+        unset($data['password']);
+        if (!empty(request()->password)) {
+            $data +=['password'=>Hash::make(request()->password)];
+        }else{
+            $data +=['password' => bcrypt(mt_rand())];
+        }
+        
         if (!empty(request()->last_donated)) {
         $data +=['last_donated'=>\Carbon\Carbon::parse(request()->last_donated)->toDateTimeString()];
         }
@@ -114,6 +121,10 @@ class UserManagerController extends Controller
     {
         // dd($request->all());
         $data = $this->validateUser();
+        unset($data['password']);
+        if (!empty(request()->password)) {
+            $data +=['password'=>Hash::make(request()->password)];
+        }
         if (!empty(request()->last_donated)) {
         $data +=['last_donated'=>\Carbon\Carbon::parse(request()->last_donated)->toDateTimeString()];
         }
@@ -121,7 +132,8 @@ class UserManagerController extends Controller
         $user = User::where('id',$user)->firstOrFail();
 
         $user->update($data);
-        return redirect()->route('admin.usermanager.index')->with('info','Result Updated,');
+
+        return redirect()->route('admin.usermanager.index')->with('info','User Updated,');
 
     }
 
