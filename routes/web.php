@@ -27,7 +27,7 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('user.dashboard');
 });
 Route::name('admin.')->prefix('admin')->middleware(['admincheck'])->group(function () {
-	Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+	Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 	// Send email to user asking for blood donation.
     Route::post('usermanager/{usermanager}/sendmail', [App\Http\Controllers\Admin\UserManagerController::class,'sendMail'])
     ->name('usermanager.sendmail');
