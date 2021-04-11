@@ -218,7 +218,7 @@
                         </a>
                         <ul class="c-sidebar-nav-dropdown-items">
                             <li class="c-sidebar-nav-item">
-                                <a href="{{-- route("admin.pincode.index") --}}" class="c-sidebar-nav-link {{ request()->is("admin/donor") || request()->is("admin/pincode/*") ? "c-active" : "" }}">
+                                <a href="{{ route("admin.pincode.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/donor") || request()->is("admin/pincode/*") ? "c-active" : "" }}">
                                     <i class="fa-fw fas fa-map-marker-alt c-sidebar-nav-icon">
 
                                     </i>
@@ -226,7 +226,7 @@
                                 </a>
                             </li>
                             <li class="c-sidebar-nav-item">
-                                <a href="{{-- route("admin.pincode.create") --}}" class="c-sidebar-nav-link {{ request()->is("admin/pincode") || request()->is("admin/pincode/*") ? "c-active" : "" }}">
+                                <a href="{{ route("admin.pincode.create") }}" class="c-sidebar-nav-link {{ request()->is("admin/pincode") || request()->is("admin/pincode/*") ? "c-active" : "" }}">
                                     <i class="fa-fw fas fa-map-pin c-sidebar-nav-icon">
 
                                     </i>
