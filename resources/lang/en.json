@@ -1,5 +1,7 @@
 {
+	"site_name":"AlpanA",
 	"login":"Login",
+	"profile":"Profile",
 	"logout":"Logout",
 	"register":"Register",
 	"change_password":"Change Password",
@@ -14,18 +16,19 @@
 	"settings":"Settings",
 	"donor":"Donor",
 	"donor_index":"Donor List",
-	"settings_site_details":"Settings Site Details",
-	"pages_title":"Pages Title",
-	"pages_home":"Pages Home",
-	"pages_about":"Pages About",
-	"pages_contact":"Pages Contact",
+	"settings_site_details":"Site Settings",
+	"pages_title":"Pages",
+    "pages_home":"Home Page",
+    "pages_about":"About Page",
+    "pages_contact":"Contact Page",
 	"certificate_title":"Certificate Title",
 	"usermanager":"User Manager",
 	"usermanager_index":"User's List",
 	"usermanager_create":"Create A User",
-	"settings_language":"Site Language",
+	"settings_language":"Language",
 	"pincode":"Pincode",
 	"pincode_index":"Pincode List",
-	"pincode_create":"Add Pincode"
+	"pincode_create":"Add Pincode",
+	"error_only_cloud_provider_available":"Sorry! You can only download using cloud service. Please update your settings."
 
 }

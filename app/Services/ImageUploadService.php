@@ -6,6 +6,7 @@ namespace App\Services;
 
 use Auth;
 use App\model\User;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Storage;
 
 	/**
@@ -25,7 +26,12 @@ use Illuminate\Support\Facades\Storage;
 	function __construct($userDetails = null)
 	{ 
 		if (empty($userDetails)) {
-			$this->userDetails = auth()->user();
+			if (auth()->user()) {
+				$this->userDetails = auth()->user();
+			}else{
+				$this->userDetails = null;
+			}
+			
 		}else{
 			$this->userDetails = $userDetails;
 		}
@@ -68,6 +74,54 @@ use Illuminate\Support\Facades\Storage;
 		}
 	}
 
+
+	public function requisitionUpload($formInputName='file', $subDirectory='/requisition/')
+	{
+		if (!empty(request()->file($formInputName))) {
+			
+				if ($this->defaultStorage == 1) {
+                // Cloudnary
+					$uploadedFileUrl = request()->file->storeOnCloudinary('abdd/'.\carbon\carbon::now()->toDateString());  
+					return $uploadedFileUrl->getSecurePath();
+				}else{
+                // Local Storage
+					$date = \carbon\carbon::now()->toDateString();
+					$uploadedFileUrl = request()->file->store($subDirectory.$date, 'public');
+                	// $request->file('file')->store('public/images');
+					return 'storage/'.$uploadedFileUrl; 
+				}
+			
+		}else{
+			return null;
+		}
+		
+
+	}
+
+	public function certificateUpload($formInputName='file',$subDirectory='/certificate/')
+	{
+		// If file exists
+        if (!empty(request()->file('certificate_template'))) 
+        {
+            // Get the organisation details
+            $getOrgDetails = Setting::first();
+
+            // If storage space is cloud and selected from org details.
+            if (!empty($getOrgDetails) AND $getOrgDetails->document_hosting == 1) {
+
+                $uploadedFileUrl = request()->certificate_template->storeOnCloudinary('abdd/certificate/');  
+                return $uploadedFileUrl->getSecurePath();
+            }else{                
+                // If not uploading in public folder its just throwing 404 error.
+                $uploadedFileUrl = request()->certificate_template->store('public/certificate');
+                // change to the storage folder 
+                return url(asset('storage/certificate/'.str_replace('public/certificate/','',$uploadedFileUrl)));
+            }
+        }else{
+            // If no image is passed return null.
+            return null;
+        }
+	}
 
 
 
