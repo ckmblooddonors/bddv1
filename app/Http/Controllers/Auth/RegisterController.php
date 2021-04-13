@@ -29,7 +29,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo()
+    {
+        return route('user.dashboard');
+    }
 
     /**
      * Create a new controller instance.
@@ -51,8 +55,14 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'username'=>['required','min:6','alpha_dash'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'pincode'=>['required','digits:6'],
+            'blood_group'=>['required'],
+            'blood_donor'=>['required'],
+            'mobile'=>['required','digits:10'],
+            'last_donated'=>['required','date'],
         ]);
     }
 
@@ -67,6 +77,12 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'username'=>$data['username'],
+            'blood_group'=>$data['blood_group'],
+            'is_donor'=>$data['blood_donor'],
+            'pincode_id'=>$data['pincode'],
+            'mobile'=>$data['mobile'],
+            'last_donated'=>\Carbon\Carbon::parse($data['last_donated'])->toDateTimeString(),
             'password' => Hash::make($data['password']),
         ]);
     }

@@ -19,6 +19,17 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('username')->unique();
+            $table->string('mobile')->unique();
+            $table->string('other_contact')->nullable();
+            // Bloodgroup must not be null
+            $table->tinyInteger('blood_group');
+            $table->boolean('is_donor')->default(1);
+            $table->boolean('is_admin')->default(0);
+            $table->unsignedBigInteger('pincode_id')->nullable();
+            $table->timestamp('last_donated')->nullable();
+            $table->timestamp('can_not_donate_until')->nullable();
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
