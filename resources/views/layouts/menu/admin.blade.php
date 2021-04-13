@@ -8,7 +8,7 @@
     @if(Auth::user()->is_admin)
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
-            <a href="{{-- route("admin.dashboard") --}}" class="c-sidebar-nav-link">
+            <a href="{{ route("admin.dashboard") }}" class="c-sidebar-nav-link">
                 <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
 
                 </i>
@@ -53,7 +53,7 @@
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a href="{{-- route("admin.requisition.index") --}}" class="c-sidebar-nav-link {{ request()->is("admin/requisition") || request()->is("admin/requisition/*") ? "c-active" : "" }}">
+                    <a href="{{ route("admin.requisition.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/requisition") || request()->is("admin/requisition/*") ? "c-active" : "" }}">
                         <i class="fa-fw fas fa-file-medical c-sidebar-nav-icon">
 
                         </i>
@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a href="{{-- route("admin.requisition.create") --}}" class="c-sidebar-nav-link {{ request()->is("admin/requisition") || request()->is("admin/requisition/*") ? "c-active" : "" }}">
+                    <a href="{{ route("admin.requisition.create") }}" class="c-sidebar-nav-link {{ request()->is("admin/requisition") || request()->is("admin/requisition/*") ? "c-active" : "" }}">
                         <i class="fa-fw fas fa-file-medical c-sidebar-nav-icon">
 
                         </i>
@@ -79,7 +79,7 @@
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a href="{{-- route("admin.donation.index") --}}" class="c-sidebar-nav-link {{ request()->is("admin/donation") || request()->is("admin/donation/*") ? "c-active" : "" }}">
+                    <a href="{{ route("admin.donation.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/donation") || request()->is("admin/donation/*") ? "c-active" : "" }}">
                         <i class="fa-fw fas fa-th-list c-sidebar-nav-icon">
 
                         </i>
@@ -97,7 +97,7 @@
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a href="{{-- route("admin.donor.index") --}}" class="c-sidebar-nav-link {{ request()->is("admin/donor") || request()->is("admin/donor/*") ? "c-active" : "" }}">
+                    <a href="{{ route("admin.donor.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/donor") || request()->is("admin/donor/*") ? "c-active" : "" }}">
                         <i class="fa-fw fas fa-th-list c-sidebar-nav-icon">
 
                         </i>
@@ -116,7 +116,7 @@
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a href="{{-- route("admin.details.edit") --}}" class="c-sidebar-nav-link {{ request()->is("admin/details") || request()->is("admin/details/*") ? "c-active" : "" }}">
+                    <a href="{{ route("admin.settings") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
                         <i class="fa-fw fas fa-cog c-sidebar-nav-icon">
 
                         </i>
@@ -133,7 +133,7 @@
                     </a>
                     <ul class="c-sidebar-nav-dropdown-items">
                         <li class="c-sidebar-nav-item">
-                            <a href="{{-- route('admin.page.edit',['home']) --}}" class="c-sidebar-nav-link {{ request()->is("admin/page") || request()->is("admin/page/home/*") ? "c-active" : "" }}">
+                            <a href="{{ route('admin.page.edit',['home']) }}" class="c-sidebar-nav-link {{ request()->is("admin/page") || request()->is("admin/page/home/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-home c-sidebar-nav-icon">
 
                                 </i>
@@ -141,7 +141,7 @@
                             </a>
                         </li>
                         <li class="c-sidebar-nav-item">
-                            <a href="{{-- route("admin.page.edit",['about']) --}}" class="c-sidebar-nav-link {{ request()->is("admin/page") || request()->is("admin/page/about/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.page.edit",['about']) }}" class="c-sidebar-nav-link {{ request()->is("admin/page") || request()->is("admin/page/about/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
 
                                 </i>
@@ -149,7 +149,7 @@
                             </a>
                         </li>
                         <li class="c-sidebar-nav-item">
-                            <a href="{{-- route("admin.page.edit",['contact']) --}}" class="c-sidebar-nav-link {{ request()->is("admin/page") || request()->is("admin/page/contact/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.page.edit",['contact']) }}" class="c-sidebar-nav-link {{ request()->is("admin/page") || request()->is("admin/page/contact/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-id-badge c-sidebar-nav-icon">
 
                                 </i>
@@ -180,7 +180,7 @@
                 </ul>
                 <ul class="c-sidebar-nav-dropdown-items">
                     <li class="c-sidebar-nav-item">
-                        <a href="{{-- route("admin.certificate") --}}" class="c-sidebar-nav-link {{ request()->is("admin/certificate") || request()->is("admin/certificate/*") ? "c-active" : "" }}">
+                        <a href="{{ route("admin.certificate") }}" class="c-sidebar-nav-link {{ request()->is("admin/certificate") || request()->is("admin/certificate/*") ? "c-active" : "" }}">
                             <i class="fa-fw fas fa-certificate c-sidebar-nav-icon">
 
                             </i>
@@ -238,18 +238,7 @@
                 </ul>
             </li>
             @endif
-            
-            @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
-            @can('profile_password_edit')
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
-                    <i class="fa-fw fas fa-key c-sidebar-nav-icon">
-                    </i>
-                    {{ trans('change_password') }}
-                </a>
-            </li>
-            @endcan
-            @endif
+
             <li class="c-sidebar-nav-item">
                 <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">

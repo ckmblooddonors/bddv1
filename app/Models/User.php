@@ -56,7 +56,7 @@ class User extends Authenticatable
 
     public function donations()
     {
-        // return $this->hasMany('App\Models\Donation','user_id','id');
+        return $this->hasMany('App\Models\Donation','user_id','id');
     }
     
     public function profile()

@@ -63,6 +63,7 @@ class UserManagerController extends Controller
         // Get validated data and add password and last donated field
         $data = $this->validateUser();
         unset($data['password']);
+        
         if (!empty(request()->password)) {
             $data +=['password'=>Hash::make(request()->password)];
         }else{
