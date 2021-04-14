@@ -64,11 +64,18 @@ class RequisitionController extends Controller
         unset($data['when_wanted']);
         $data +=['when_wanted'=>\Carbon\Carbon::parse($request->when_wanted . ' ' . $request->when_wanted_time)->toDateTimeString()];
 
+        // User creating requisition?
+        if (Auth::user()) {
+            $data += ['user_id'=>Auth::id()];
+        }
+        
         // Send Image upload to service
         $imageUpload = new ImageUploadService();
         $data += ['img'=>$imageUpload->requisitionUpload()];
         
         $createRequisition = Requisition::create($data);
+
+        // Todo: Add mail service and send mail to all admin.
        
        return redirect()->route('requisition.index')->with('success',__('Requisition Created.'));
     }
