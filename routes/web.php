@@ -22,7 +22,7 @@ Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->nam
 Route::group(['middleware'=>'auth'],function(){
 
     // Dashboard Route
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('user.dashboard');
+    Route::get('/dashboard', App\Http\Controllers\User\DashboardController::class)->name('user.dashboard');
 
     Route::resource('donation', App\Http\Controllers\User\DonationController::class);
 
