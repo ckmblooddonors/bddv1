@@ -16,7 +16,7 @@
 
 ### Tell us about you. 
 
-I am a cancer survivor. Learning web development just to survive.
+I am a full stack web developer.
 
 ### Why made this app?
 
